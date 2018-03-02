@@ -1,0 +1,31 @@
+page{ 
+ height: 100%; 
+} 
+.online-main{
+  height: 95%;
+  background-color: #272727;
+  
+  
+}
+.online-tip{
+  border-bottom: 1rpx solid #3B3B3B;
+  padding: 60rpx;
+}
+
+.online-mobile-list{
+  border-bottom: 1rpx solid #3B3B3B;
+  padding: 60rpx;
+}
+
+.online-mobile{
+  padding-top: 10rpx;
+}
+
+.online-email-list{
+  border-bottom: 1rpx solid #3B3B3B;
+  padding: 60rpx;
+}
+
+.online-email{
+  padding-top: 10rpx;
+}

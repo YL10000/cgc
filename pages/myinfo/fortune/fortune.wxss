@@ -1,0 +1,62 @@
+page{ 
+ height: 100%; 
+} 
+.fortune-main{
+  height: 95%;
+  background-color: #272727;
+}
+
+.fortune-title{
+  display: flex;
+  display: -webkit-flex;
+  height: 250rpx;
+  flex-direction:column ;
+  justify-content:center;
+  align-items:center;
+  border-bottom: 1rpx solid #3B3B3B;
+}
+.fortuen-title-money{
+  font-size: 14px;
+  padding-top: 30rpx;
+  color: #F9DF01;
+}
+
+
+.swiper-tab{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction:row ;
+  justify-content:space-between;
+  border-bottom: 1rpx solid #3B3B3B;
+  height: 75rpx;
+}
+
+.swiper-tab-list{
+  display: flex;
+  display: -webkit-flex;
+  width:50%;
+  justify-content:center;
+  align-items:center;
+  height: 100%;
+}
+
+.swiper-box{
+  
+  height: 700rpx;
+  overflow-y:auto;
+
+
+}
+
+.fortune-list{
+  overflow-y: auto;
+}
+
+.fortune-item{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction:row ;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #3B3B3B;
+  padding:25rpx;
+}

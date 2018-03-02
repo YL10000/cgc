@@ -1,0 +1,32 @@
+page{ 
+ height: 100%; 
+ background-color: #272727;
+} 
+
+.exchange-item{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction:row ;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #3B3B3B;
+}
+
+.exchange-item image{
+  
+  width: 150rpx;
+  height:150rpx;
+
+}
+
+.exchange-item-type{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction:row ;
+  justify-content:space-between;
+}
+
+.exchange-item-detail{
+  width: 75%;
+}

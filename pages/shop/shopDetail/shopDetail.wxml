@@ -1,0 +1,53 @@
+<view class='page-title'>商品详情</view>
+
+<view class='good-detail'>
+  <view class='good'>
+    <image src='{{good.image}}'></image>
+    <text>{{good.name}}</text>
+    <text>{{good.money}}福禄币</text>
+    <view class='good-form'>
+      <text bindtap='subtractCount'>-</text>
+      <input class='good-input' type="number" bindinput='changeCount' placeholder="带小数点的数字键盘" value='{{count}}'/>
+      <text bindtap='addCount'>+</text>
+    </view>
+    <button size='mini' type="default" bindtap='rechargeGood' >立即兑换</button> 
+  </view>
+
+  <view class='good-profile'>
+    <view class='profile-title'>商品简介</view>
+    <view class='profile-content'>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.
+    </view>
+  </view>
+
+  <view class='good-profile'>
+    <view class='profile-title'>商品说明</view>
+    <view class='profile-content'>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.
+    </view>
+  </view>
+
+
+  <!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">兑换</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChangeQQ" class="input" placeholder="请输入qq"></input>
+    </view>
+    <view class="modal-input">
+      <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChange" class="input" placeholder="请输入手机号"></input>
+    </view>
+    <view>请认真填写信息，以便客服人员尽快联系您</view>
+    <view>支付福禄币：{{good.money*count}}</view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+  </view>
+</view>
+
+
+
+</view>

@@ -1,0 +1,15 @@
+<view class='page-title'>商城</view>
+
+<scroll-view scroll-y style="height: 1030rpx;" data-index='0' bindscrolltolower="loadMore">
+  <view class='goods-list'>
+    <block wx:for="{{goods}}" wx:for-index="index">
+      <view class='good'>
+        <image src='{{item.image}}'></image>
+        <text>{{item.name}}</text>
+        <text>{{item.money}}福禄币</text>
+        <button data-index='{{index}}' size='mini' type="default" bindtap='goodDetail' >兑换</button> 
+      </view>
+    </block>
+  </view>
+</scroll-view>
+

@@ -1,0 +1,72 @@
+page{ 
+ height: 100%; 
+ background-color: #272727;
+
+} 
+
+swiper {
+height:80%;
+}
+
+.swiper-tab{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction:row ;
+  justify-content:space-between;
+  border-bottom: 1rpx solid #3B3B3B;
+  height: 75rpx;
+}
+
+.swiper-tab-list{
+  display: flex;
+  display: -webkit-flex;
+  width:50%;
+  justify-content:center;
+  align-items:center;
+  height: 100%;
+}
+
+
+
+.odds-list{
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #3B3B3B;
+}
+
+.odds-item{
+  padding: 30rpx 0rpx 0rpx 30rpx;
+}
+
+.odds-rule{
+  padding: 20rpx 0rpx 0rpx 50rpx;
+}
+
+.reback-form{
+  padding: 25rpx;
+  
+}
+
+.reback-textarea{
+  min-height: 100px;
+  border: 1rpx solid #3B3B3B;
+  width: 100%;
+  
+}
+
+.reback-image-list{
+  padding-top: 15rpx;
+}
+
+.reback-image-list image{
+  width: 50px;
+  height: 50px;
+  padding-right: 5px;
+}
+
+.reback-mobile{
+  width: 100%;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  height: 25px;
+  border: 1rpx solid #3B3B3B;
+}

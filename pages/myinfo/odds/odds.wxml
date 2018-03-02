@@ -1,0 +1,15 @@
+<view class='page-title'>赔率计算表</view>
+<view class='odds-list'>
+  <view class='odds-item'>
+    1、冠军玩法赔率计算：
+      <view class='odds-rule'>返奖金额＝单注金额＊猜中战队实时赔率</view>
+  </view>
+  <view class='odds-item'>
+    2、胜负玩法赔率计算：
+    <view  class='odds-rule'>返奖金额＝单注金额＊猜中战队实时赔率</view>
+  </view>
+  <view class='odds-item'>
+    3、胜负串联赔率计算：
+    <view  class='odds-rule'>返奖金额＝单注金额＊方案中战队赔率乘积</view>
+  </view>
+</view>

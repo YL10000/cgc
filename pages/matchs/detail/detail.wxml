@@ -1,0 +1,85 @@
+<view class='page-title'>我的竞猜</view>
+<view class='detail-main'>
+  <view class='detail-title'>
+    <view class='detail-title-head'>
+      <view style='width:20%;border-right: 1rpx solid #4C4C4C;'>{{method==1?"冠军玩法":(method==2?"胜负玩法":"胜负串联")}}</view>
+      <view style='width:80%;'>冠军</view>
+    </view>
+    <view class='detail-title-time'>
+        <view>封盘:05天20:21:22</view>
+    </view>
+    <view wx:if="{{method==2}}" class='detail-title-content'>
+      <view class='detail-title-player'>
+        <view class='detail-title-player-image'>
+          <image src='../../images/player-01.png'></image>
+          <view>
+          3.00
+          </view>
+        </view>
+        <view class='detail-title-player-name'>VGJ.Thunder</view>
+      </view>
+
+      <view style='font-size:18px;font-weight: bold;'>VS</view>
+
+      <view class='detail-title-player'>
+        <view class='detail-title-player-image'>
+          <view>
+          2.00
+          </view>
+          <image src='../../images/player-02.png'></image>
+        </view>
+        <view class='detail-title-player-name'>NGA Gaming</view>
+      </view>
+    </view>
+    <view wx:if="{{method==1}}" class='detail-title-content02'>
+      <view>阿斯蒂芬</view>
+    </view>
+  </view>
+
+  <view class='detail-content'>
+    <view>王者荣耀</view>
+    <view class='detail-content-palyer-table'>
+      <view class='detail-content-palyer-tr'>
+        <view style='width:20%;' class='detail-content-palyer-td'>
+          玩法
+        </view>
+        <view style='width:20%;' class='detail-content-palyer-td'>
+          战队
+        </view>
+        <view class='detail-content-palyer-td'>
+          赔率
+        </view>
+      </view>
+
+      <view class='detail-content-palyer-tr'>
+        <view style='width:20%;' class='detail-content-palyer-td'>
+          冠军玩法
+        </view>
+        <view style='width:20%;' class='detail-content-palyer-td detail-content-player'>
+          <image src='../../images/player-01.png'></image>
+          <view>去那儿</view>
+        </view>
+        <view class='detail-content-palyer-td'>
+          3.02
+        </view>
+      </view>
+
+      
+    </view>
+
+    <view class='detail-content-money-list'>
+        <view class='detail-content-money-item'>
+        选单金额 <text>100.00</text>
+        </view>
+        <view class='detail-content-money-item'>
+        返奖金额 <text>未知</text>
+        </view>
+        <view class='detail-content-money-item detail-content-time'>
+        2018年1月24日 PM:03:52
+        </view>
+      </view>
+
+  </view>
+
+  
+</view>

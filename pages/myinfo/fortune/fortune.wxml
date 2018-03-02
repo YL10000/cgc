@@ -1,0 +1,34 @@
+<!--pages/fortune/fortune.wxml-->
+<view class='page-title'>福禄币</view>
+<view class='fortune-main'>
+  
+  <view class='fortune-title'>
+    <view class='fortuen-title-name'>福禄币</view>
+    <view class='fortuen-title-money'>1000.00</view>
+  </view>
+  <view class='fortune-detail'>
+    <view class="swiper-tab">
+      <view class="swiper-tab-list {{currentTab==0 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="0" bindtap="swichTab">收入</view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="1" bindtap="swichTab">支出</view>
+    </view>
+    <swiper  current="{{currentTab}}" class="swiper-box" duration="300" style="min-height:100px" >
+      <swiper-item class="fortune-list">
+        <scroll-view scroll-y style="height: 730rpx;" data-index='0' bindscrolltolower="loadMore">
+          <view wx:for="{{incomes}}" wx:for-index="index" class='fortune-item'>
+            <view>{{item.money}}福禄币</view>
+            <view>{{item.time}}</view>
+          </view>
+        </scroll-view>
+        
+      </swiper-item>
+      <swiper-item class="fortune-list">
+        <scroll-view scroll-y style="height: 730rpx;" data-index='1' bindscrolltolower="loadMore">
+          <view wx:for="{{outcomes}}" wx:for-index="index" class='fortune-item'>
+            <view>{{item.money}}福禄币</view>
+            <view>{{item.time}}</view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

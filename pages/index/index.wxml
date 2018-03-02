@@ -1,0 +1,381 @@
+<!--index.wxml-->
+<view class='page-title'>葫芦电竞{{text}}</view>
+<view class='main'>
+  <swiper class='match-swipr' indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" 
+    display-multiple-items="4">
+    <block wx:for="{{imgUrls}}" wx:for-index="index">
+      <swiper-item>
+        <view class="item-box {{currentPage==index?'item-box-active':'swiper-tab-list-default'}} " >
+          <image data-index='{{index}}' bindtap="itemDetail" class='item-image' src="{{item}}" width="75" height="75"/><br/>
+          <text class='item-title'>{{index}}</text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='item-detail'>
+      <view class="swiper-tab">
+        <view class="swiper-tab-list {{currentTab==0 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="0" bindtap="swichNav">可投注</view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="1" bindtap="swichNav">待揭晓</view>
+        <view class="swiper-tab-list {{currentTab==2 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="2" bindtap="swichNav">已结束</view>
+      </view>
+      <swiper  current="{{currentTab}}" class="swiper-box" duration="300" style="min-height:100px">
+        <!--可投注-->
+        <swiper-item>
+          <scroll-view scroll-y style="height: 800rpx;" data-index='0' bindscrolltolower="loadMore">
+          <block wx:for="{{ableMatchs}}" wx:for-index="index">
+            <view class='detail-title'>
+              <view class='detail-title-head'>
+                <view style='width:20%;border-right: 1rpx solid #4C4C4C;'>{{item.method==1?"冠军玩法":(item.method==2?"胜负玩法":"胜负串联")}}</view>
+                <view style='width:80%;'>{{item.name}}</view>
+              </view>
+              <view class='detail-title-time'>
+                  <view>封盘:{{item.durion}}</view>
+              </view>
+              <!--冠军玩法-->
+              <view wx:if="{{item.method==1 || item.method==3}}" class='detail-title-content02'>
+                <view>{{item.palyerName}}</view>
+              </view>
+              <!--胜负玩法-->
+              <view wx:if="{{item.method==2}}"  class='detail-title-content'>
+                <view class='detail-title-player'>
+                  <view class='detail-title-player-image'>
+                    <image src='{{item.players[0].avater}}'></image>
+                    <view style='padding-left:45rpx;margin-left:-15px;'>
+                    {{item.players[0].money}}
+                    </view>
+                  </view>
+                  <view class='detail-title-player-name'>{{item.players[0].name}}</view>
+                </view>
+
+                <view style='font-size:18px;font-weight: bold;'>VS</view>
+
+                <view class='detail-title-player'>
+                  <view class='detail-title-player-image'>
+                    <view style='padding-right: 40rpx;margin-right: -25rpx;'>
+                    {{item.players[1].money}}
+                    </view>
+                    <image src='{{item.players[1].avater}}'></image>
+                  </view>
+                  <view class='detail-title-player-name'>{{item.players[1].name}}</view>
+                </view>
+              </view>
+              <view class='detail-title-arrow'>
+                <image  data-index='{{index}}' bindtap='openDetail' src='../images/{{item.open==1?"arrow-up.png":"arrow-down.png"}}'></image>
+              </view>
+            </view>
+
+            <!--投注详情-->
+            <view wx:if="{{item.open==1}}" class='detail-list'>
+              <view wx:if="{{item.method==2}}">
+                <view class='detail-up'>
+                  <view class='detail-item-left detail-item-title'>
+                      击杀最多
+                  </view>
+                  <block  wx:for="{{item.details.kills}}" wx:for-index="index" wx:for-item="detail">
+                    <view class='detail-item'>
+                      <view class='detail-item-left'>
+                        <image src='{{detail.avater}}'></image>
+                        <view>{{detail.name}}</view>
+                        <view>胜</view>
+                      </view>
+                      <view class='detail-item-right'>
+                        <view>{{detail.odd}}</view>
+                        <image src='../images/add.png' bindtap='openBetting'></image>
+                      </view>
+                    </view>
+                  </block>
+                </view>
+                <view class='detail-down'>
+                  <view class='detail-item-left detail-item-title'>
+                      助攻最多
+                  </view>
+                  <block  wx:for="{{item.details.helps}}" wx:for-index="index" wx:for-item="detail">
+                    <view class='detail-item'>
+                      <view class='detail-item-left'>
+                        <image src='{{detail.avater}}'></image>
+                        <view>{{detail.name}}</view>
+                        <view>胜</view>
+                      </view>
+                      <view class='detail-item-right'>
+                        <view>{{detail.odd}}</view>
+                        <image src='../images/add.png' bindtap='openBetting'></image>
+                      </view>
+                    </view>
+                  </block>
+                </view>
+              </view>
+
+              <block wx:if="{{item.method!=2}}" wx:for="{{item.details}}" wx:for-index="index" wx:for-item="detail">
+                <view class='detail-item'>
+                  <view class='detail-item-left'>
+                    <image src='{{detail.avater}}'></image>
+                    <view>{{detail.name}}</view>
+                    <view>胜</view>
+                  </view>
+                  <view wx:if="{{item.method==3}}" class='detail-item-middle'>
+                    <view>{{detail.matchIndex}}</view>
+                  </view>
+                  <view style="width:{{item.method==3?'30%':'50%'}};" class='detail-item-right'>
+                    <view>{{detail.odd}}</view>
+                    <image src='../images/add.png' bindtap='openBetting'></image>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </block>
+          </scroll-view>
+        </swiper-item>
+
+
+        <swiper-item>
+         <scroll-view scroll-y style="height: 800rpx;" data-index='1' bindscrolltolower="loadMore">
+         <block wx:for="{{waitMatchs}}" wx:for-index="index">
+          <view class='detail-title'>
+              <view class='detail-title-head'>
+                <view style='width:20%;border-right: 1rpx solid #4C4C4C;'>{{item.method==1?"冠军玩法":(item.method==2?"胜负玩法":"胜负串联")}}</view>
+                <view style='width:60%;'>{{item.name}}</view>
+
+                <view style='color:red;'>待揭晓</view>
+              </view>
+              <!--冠军玩法-->
+              <view wx:if="{{item.method==1 || item.method==3}}" class='detail-title-content02'>
+                <view>阿斯蒂芬</view>
+              </view>
+              <!--胜负玩法-->
+              <view wx:if="{{item.method==2}}"  class='detail-title-content'>
+                <view class='detail-title-player'>
+                  <view class='detail-title-player-image'>
+                    <image src='{{item.players[0].avater}}'></image>
+                    <view style='padding-left:45rpx;margin-left:-15px;'>
+                    {{item.players[0].money}}
+                    </view>
+                  </view>
+                  <view class='detail-title-player-name'>{{item.players[0].name}}</view>
+                </view>
+
+                <view style='font-size:18px;font-weight: bold;'>VS</view>
+
+                <view class='detail-title-player'>
+                  <view class='detail-title-player-image'>
+                     <view style='padding-right: 40rpx;margin-right: -25rpx;'>
+                    {{item.players[1].money}}
+                    </view>
+                    <image src='{{item.players[1].avater}}'></image>
+                  </view>
+                  <view class='detail-title-player-name'>{{item.players[1].name}}</view>
+                </view>
+              </view>
+              <view class='detail-title-arrow'>
+                <image  data-index='{{index}}' bindtap='openDetail' src='../images/{{item.open==1?"arrow-up.png":"arrow-down.png"}}'></image>
+              </view>
+            </view>
+
+           <!--投注详情-->
+            <view wx:if="{{item.open==1}}" class='detail-list'>
+              <view wx:if="{{item.method==2}}">
+                <view class='detail-up'>
+                  <view class='detail-item-left detail-item-title'>
+                      击杀最多
+                  </view>
+                  <block  wx:for="{{item.details.kills}}" wx:for-index="index" wx:for-item="detail">
+                    <view class='detail-item'>
+                      <view class='detail-item-left'>
+                        <image src='{{detail.avater}}'></image>
+                        <view>{{detail.name}}</view>
+                        <view>胜</view>
+                      </view>
+                      <view class='detail-item-right'>
+                        <view>{{detail.odd}}</view>
+                      </view>
+                    </view>
+                  </block>
+                </view>
+                <view class='detail-down'>
+                  <view class='detail-item-left detail-item-title'>
+                      助攻最多
+                  </view>
+                  <block  wx:for="{{item.details.helps}}" wx:for-index="index" wx:for-item="detail">
+                    <view class='detail-item'>
+                      <view class='detail-item-left'>
+                        <image src='{{detail.avater}}'></image>
+                        <view>{{detail.name}}</view>
+                        <view>胜</view>
+                      </view>
+                      <view class='detail-item-right'>
+                        <view>{{detail.odd}}</view>
+                      </view>
+                    </view>
+                  </block>
+                </view>
+              </view>
+
+              <block wx:if="{{item.method!=2}}" wx:for="{{item.details}}" wx:for-index="index" wx:for-item="detail">
+                <view class='detail-item'>
+                  <view class='detail-item-left'>
+                    <image src='{{detail.avater}}'></image>
+                    <view>{{detail.name}}</view>
+                    <view>胜</view>
+                  </view>
+                  <view wx:if="{{item.method==3}}" class='detail-item-middle'>
+                    <view>{{detail.matchIndex}}</view>
+                  </view>
+                  <view style="width:{{item.method==3?'30%':'50%'}};" class='detail-item-right'>
+                    <view>{{detail.odd}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+         </block>
+         </scroll-view>
+        </swiper-item>
+
+
+
+        <swiper-item>
+          <scroll-view scroll-y style="height: 800rpx;" data-index='2' bindscrolltolower="loadMore">
+          <block wx:for="{{endMatchs}}" wx:for-index="index">
+          <view class='detail-title'>
+              <view class='detail-title-head'>
+                <view style='width:20%;border-right: 1rpx solid #4C4C4C;'>{{item.method==1?"冠军玩法":(item.method==2?"胜负玩法":"胜负串联")}}</view>
+                <view style='width:60%;'>{{item.name}}</view>
+
+                <view style='color:#636363;'>已结束</view>
+              </view>
+              <!--冠军玩法-->
+              <view wx:if="{{item.method==1 || item.method==3}}" class='detail-title-content02'>
+                <view style='color:#636363;'>阿斯蒂芬</view>
+              </view>
+              <!--胜负玩法-->
+              <view wx:if="{{item.method==2}}"  class='detail-title-content'>
+                <view class='detail-title-player'>
+                  <view class='detail-title-player-image'>
+                    <image src='{{item.players[0].avater}}'></image>
+                    <text style='left:-12px;' wx:if="{{item.players[0].success}}" class='player-success'>胜</text>
+                    <view style='padding-left:45rpx;margin-left:-15px;'>
+                    {{item.players[0].money}}
+                    </view>
+                  </view>
+                  <view class='detail-title-player-name'>{{item.players[0].name}}</view>
+                </view>
+
+                <view style='font-size:18px;font-weight: bold;'>VS</view>
+
+                <view class='detail-title-player'>
+                  <view class='detail-title-player-image'>
+                     <view style='padding-right: 40rpx;margin-right: -25rpx;'>
+                    {{item.players[1].money}}
+                    </view>
+                    <image src='{{item.players[1].avater}}'></image>
+                    <text style='left:12px;' wx:if="{{item.players[1].success}}" class='player-success'>胜</text>
+                  </view>
+                  <view class='detail-title-player-name'>{{item.players[1].name}}</view>
+                </view>
+              </view>
+              <view class='detail-title-arrow'>
+                <image  data-index='{{index}}' bindtap='openDetail' src='../images/{{item.open==1?"arrow-up.png":"arrow-down.png"}}'></image>
+              </view>
+            </view>
+
+           <!--投注详情-->
+            <view wx:if="{{item.open==1}}" class='detail-list'>
+              <view wx:if="{{item.method==2}}">
+                <view class='detail-up'>
+                  <view class='detail-item-left detail-item-title'>
+                      击杀最多
+                  </view>
+                  <block  wx:for="{{item.details.kills}}" wx:for-index="index" wx:for-item="detail">
+                    <view style='{{!detail.success?"color:#636363":""}};' class='detail-item'>
+                      <view class='detail-item-left'>
+                        <image src='{{detail.avater}}'></image>
+                        <view>{{detail.name}}</view>
+                        <view>胜</view>
+                      </view>
+                      <view  style="width:30%" class='detail-item-right'>
+                        <view>{{detail.odd}}</view>
+                      </view>
+                      <view wx:if="{{detail.success}}" style='color:red;font-size: 14px;'>胜</view>
+                    </view>
+                  </block>
+                </view>
+                <view class='detail-down'>
+                  <view class='detail-item-left detail-item-title'>
+                      助攻最多
+                  </view>
+                  <block  wx:for="{{item.details.helps}}" wx:for-index="index" wx:for-item="detail">
+                    <view style='{{!detail.success?"color:#636363":""}};' class='detail-item'>
+                      <view class='detail-item-left'>
+                        <image src='{{detail.avater}}'></image>
+                        <view>{{detail.name}}</view>
+                        <view>胜</view>
+                      </view>
+                      <view style="width:30%" class='detail-item-right'>
+                        <view>{{detail.odd}}</view>
+                      </view>
+                    </view>
+                  </block>
+                </view>
+              </view>
+
+              <block wx:if="{{item.method!=2}}" wx:for="{{item.details}}" wx:for-index="index" wx:for-item="detail">
+                <view style='{{!detail.success?"color:#636363":""}};' class='detail-item'>
+                  <view class='detail-item-left'>
+                    <image src='{{detail.avater}}'></image>
+                    <view>{{detail.name}}</view>
+                    <view>胜</view>
+                  </view>
+                  <view  wx:if="{{item.method==3}}" class='detail-item-middle'>
+                    <view>{{detail.matchIndex}}</view>
+                  </view>
+                  <view style="width:{{item.method==3?'10%':'30%'}};" class='detail-item-right'>
+                    <view>{{detail.odd}}</view>
+                  </view>
+                  <view wx:if="{{detail.success}}" style='color:red;font-size: 14px;'>胜</view>
+                </view>
+              </block>
+            </view>
+         </block>
+         </scroll-view>
+        </swiper-item>
+      </swiper>
+  </view>
+
+  <!--添加投注-->
+  <view wx:if="{{bettingFlag}}" class='add-betting'>
+    <view class='betting-title'>
+      <view class='betting-title-left'>
+        <image src='../images/player-01.png'></image>
+        <view>去哪里玩</view>胜
+        <view>(冠军)</view>
+      </view>
+      <view class='betting-title-right'>
+        <image src='../images/close.png' bindtap='closeBetting'>
+        </image>
+      </view>
+    </view>
+
+    <view class='betting-content'>
+      <view class='betting-content-tr betting-content-from'>
+        <input class="betting-content-input" placeholder="最多3321福禄币"/> 
+        <view>
+        3.01
+        </view>
+        <view>
+        最高返奖<text>0.00</text>
+        </view>
+      </view>
+      <view class='betting-content-tr betting-content-pay'>
+        <view>支付金额<text>0.00</text></view>
+      </view>
+
+      <view class='betting-content-tr betting-content-pg'>
+        <view>账户余额<text>800.00</text></view>
+      </view>
+      
+    </view>
+  </view>
+
+  
+  <!--item底部结束-->
+
+</view>

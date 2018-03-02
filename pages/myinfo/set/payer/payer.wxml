@@ -1,0 +1,38 @@
+<view class='page-title'>玩法介绍</view>
+<view class='payer-list'>
+  <view class='payer-item'>
+    <view class='payer-item-title'>
+      1、冠军玩法
+    </view>
+    <view class='payer-item-detail'>
+      <view>规则：</view>
+      <view>每一个赛事，最终只有一个冠军，选择多个赛事不同队伍，不构成串联，只要猜对冠军，即可获得奖金。</view>
+      <view>计算公式：</view>
+      <view>最高返奖=竞猜金额*所投战队实时赔率</view>
+    </view>
+  </view>
+
+  <view class='payer-item'>
+    <view class='payer-item-title'>
+      2、胜负玩法
+    </view>
+    <view class='payer-item-detail'>
+      <view>规则：</view>
+      <view>竞猜单局比赛的胜负（击杀数或助杀数）。</view>
+      <view>计算公式：</view>
+      <view>最高奖金=竞猜金额*所投战队实时赔率</view>
+    </view>
+  </view>
+
+  <view class='payer-item'>
+    <view class='payer-item-title'>
+      3、串联玩法
+    </view>
+    <view class='payer-item-detail'>
+      <view>规则：</view>
+      <view>2串1，猜对2局场比赛就中奖，3串1，猜对3场比赛就中奖。</view>
+      <view>计算公式：</view>
+      <view>最高奖金=竞猜金额*(所投战队实时赔率1*所投战队实时赔率N)</view>
+    </view>
+  </view>
+</view>

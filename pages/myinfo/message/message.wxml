@@ -1,0 +1,26 @@
+<view class='page-title'>消息</view>
+<view class='page-main'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="0" bindtap="swichTab">赛事消息</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="1" bindtap="swichTab">个人消息</view>
+  </view>
+  <swiper  current="{{currentTab}}" class="swiper-box" duration="300" style="min-height:100px" bindchange="bindChange">
+    <swiper-item class="message-list">
+      <scroll-view scroll-y style="height: 1000rpx;" data-index='0' bindscrolltolower="loadMore">
+        <view wx:for="{{matchMessages}}" class='message-item'>
+          {{item.content}}
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item class="message-list">
+      <scroll-view scroll-y style="height: 1000rpx;" data-index='1' bindscrolltolower="loadMore">
+        <view wx:for="{{personalMessages}}" class='message-item'>
+          {{item.content}}
+        </view>
+      </scroll-view>
+    </swiper-item>
+    
+  </swiper>
+</view>
+

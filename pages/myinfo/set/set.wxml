@@ -1,0 +1,24 @@
+<view class='page-title'>设置</view>
+
+<view class='set-list'>
+  <view class='set-item' bindtap='toUpdatePassword'>
+    <text >修改密码</text>
+    <image src='../../images/back_img02.png' class='set-item-image'></image>
+  </view>
+  <view class='set-item' bindtap='toPayerPage'>
+    <text >玩家介绍</text>
+    <image src='../../images/back_img02.png' class='set-item-image'></image>
+  </view>
+  <view class='set-item' bindtap='toRulePage'>
+    <text >规则与条款</text>
+    <image src='../../images/back_img02.png' class='set-item-image'></image>
+  </view>
+  <view class='set-item' bindtap='clearCache'>
+    <text >清楚缓存</text>
+    <image src='../../images/back_img02.png' class='set-item-image'></image>
+  </view>
+</view>
+<view class='set-bts'>
+  <button class="set-bt" size='mini' type="default" bindtap='logout' >退出登录</button> 
+</view>
+

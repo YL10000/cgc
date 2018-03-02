@@ -1,0 +1,116 @@
+<view class='page-title'>我的竞猜</view>
+<view class='match-total'>
+  <view>总收益：1235福禄币</view>
+  <view>预计收益：1235福禄币</view>
+</view>
+
+<view class='match-empty' wx:if="{{matchs.length==0}}">
+  <view>您还没有参与过竞猜哦，赶快去竞猜吧！</view>
+  <button class="match-bt" size='mini' type="default" bindtap='toMatch' >去竞猜</button> 
+</view>
+
+<view wx:if="{{matchs.length>0}}">
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="0" bindtap="swichTab">全部</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="1" bindtap="swichTab">待揭晓</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="2" bindtap="swichTab">已结束</view>
+  </view>
+
+  <swiper  current="{{currentTab}}" class="swiper-box" duration="300" style="min-height:100px">
+    <swiper-item class='match-list'>
+      <scroll-view scroll-y style="height: 900rpx;" data-index='0' bindscrolltolower="loadMore">
+        <block wx:for="{{matchs}}" wx:for-index="index">
+          <view class='match-item'>
+            <view class='match-item-content' data-method='{{item.method}}' bindtap='toMatchDetailPage'>
+              <view class='match-item-tr'>
+                <view class='match-item-td'></view>
+                <view class='match-item-td'></view>
+                <view class='match-item-td' style='width:35%;'>{{item.method==1?"冠军玩法":(item.method==2?"胜负玩法":"胜负串联")}}</view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'>选单金额</view>
+                <view class='match-item-td'><text>{{item.payMoney}}</text>福禄币</view>
+                <view class='match-item-td'></view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'>返奖金额</view>
+                <view class='match-item-td'>{{item.status==1?item.backMoney:"未知"}}</view>
+                <view class='match-item-td'></view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'></view>
+                <view class='match-item-td'></view>
+                <view class='match-item-td' style='width:35%;'>{{item.payTime}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>  
+    </swiper-item>
+
+    <swiper-item class='match-list'>
+      <scroll-view scroll-y style="height: 900rpx;" data-index='1' bindscrolltolower="loadMore">
+        <block wx:for="{{matchs}}" wx:for-index="index">
+          <view wx:if="{{item.status==0}}" class='match-item'>
+            <view class='match-item-content' data-method='1' bindtap='toMatchDetailPage'>
+              <view class='match-item-tr'>
+                <view class='match-item-td'></view>
+                <view class='match-item-td'></view>
+                <view class='match-item-td' style='width:35%;'>{{item.method==1?"冠军玩法":(item.method==2?"胜负玩法":"胜负串联")}}</view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'>选单金额</view>
+                <view class='match-item-td'><text>{{item.payMoney}}</text>福禄币</view>
+                <view class='match-item-td'></view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'>返奖金额</view>
+                <view class='match-item-td'>{{item.status==1?item.backMoney:"未知"}}</view>
+                <view class='match-item-td'></view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'></view>
+                <view class='match-item-td'></view>
+                <view class='match-item-td' style='width:35%;'>{{item.payTime}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>  
+    </swiper-item>
+
+    <swiper-item class='match-list'>
+      <scroll-view scroll-y style="height: 900rpx;" data-index='2' bindscrolltolower="loadMore">
+        <block wx:for="{{matchs}}" wx:for-index="index">
+          <view wx:if="{{item.status==1}}" class='match-item'>
+            <view class='match-item-content' data-method='1' bindtap='toMatchDetailPage'>
+              <view class='match-item-tr'>
+                <view class='match-item-td'></view>
+                <view class='match-item-td'></view>
+                <view class='match-item-td' style='width:35%;'>{{item.method==1?"冠军玩法":(item.method==2?"胜负玩法":"胜负串联")}}</view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'>选单金额</view>
+                <view class='match-item-td'><text>{{item.payMoney}}</text>福禄币</view>
+                <view class='match-item-td'></view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'>返奖金额</view>
+                <view class='match-item-td'>{{item.status==1?item.backMoney:"未知"}}</view>
+                <view class='match-item-td'></view>
+              </view>
+              <view class='match-item-tr'>
+                <view class='match-item-td'></view>
+                <view class='match-item-td'></view>
+                <view class='match-item-td' style='width:35%;'>{{item.payTime}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>  
+    </swiper-item>
+  </swiper>
+
+</view>
+
+

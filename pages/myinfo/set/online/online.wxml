@@ -1,0 +1,16 @@
+<view class='page-title'>在线客服7*24</view>
+<view class='online-main'>
+  <view class='online-tip'>
+    我们的客服人员将通过电话或者电子邮件为您提供24小时全天服务。
+  </view>
+  <view class='online-mobile-list'>
+    <view>联络电话：</view>
+    <view class='online-mobile'>0000000000000</view>
+    <view class='online-mobile'>0000000000000</view>
+    <view class='online-mobile'>0000000000000</view>
+  </view>
+  <view class='online-email-list'>
+    <view>电子信箱：</view>
+    <view class='online-email'>90909000@hotmail.com</view>
+  </view>
+</view>

@@ -1,0 +1,37 @@
+<view class='page-title'>帮助与反馈</view>
+<view class="swiper-tab">
+      <view class="swiper-tab-list {{currentTab==0 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="0" bindtap="swichTab">提交反馈</view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'item-box-active' : 'swiper-tab-list-default'}}" data-index="1" bindtap="swichTab">常见问题</view>
+    </view>
+    <view class='help-content'>
+        <view wx:if="{{currentTab==0}}" class='reback-form'>
+          <textarea wx:if="{{currentTab==0}}" class='reback-textarea' maxlength="200" auto-height placeholder="请输入反馈意见或建议"  />
+          <view class='reback-image-list'>
+            <block wx:for="{{uploadImages}}" wx:for-index="index">
+              <image src='{{item}}'></image>
+            </block>
+            <image src='../../images/product.png' wx:if="{{uploadImages.length<3}}" bindtap='choseImage'></image>
+            
+          </view>
+          <input type='number' class='reback-mobile' placeholder="您可以输入您的联系方式以便我们更快联系您，为您解决问题"/>
+          <button class="loginBtn" type="primary"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="login">提交</button> 
+          
+        </view>
+
+        
+        <view wx:if="{{currentTab==1}}" class='odds-list'>
+          <view class='odds-item'>
+            一、登录问题
+              <view class='odds-rule'>如遇到账号登录不上去的问题，请重新尝试网络顺畅时登录</view>
+          </view>
+          <view class='odds-item'>
+            二、投注遇到问题
+            <view  class='odds-rule'>投注中如遇到不能顺利投注，提示支付失败等问题，请重新进行支付，或网络顺畅时支付。</view>
+          </view>
+          <view class='odds-item'>
+            三、充值问题
+            <view  class='odds-rule'>充值我们会人工客服进行充值道具，并且赠送福禄币，福禄币可用于兑换商品和进行竞猜。</view>
+          </view>
+        </view>
+    </view>  
+

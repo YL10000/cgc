@@ -1,0 +1,20 @@
+<view class='page-title'>兑换记录</view>
+<view class='exchange-list'>
+  <scroll-view scroll-y style="height: 1100rpx;" data-index='0' bindscrolltolower="loadMore">
+    <view wx:for="{{goods}}" class='exchange-item'>
+      <image src='{{item.image}}'></image>
+      <view class='exchange-item-detail'>
+        <view class='exchange-item-type'>
+          <view>{{item.name}}</view>
+          <view>{{item.status==0?"兑换中":"已兑换"}}</view>
+        </view>
+        <view>
+          {{item.fortune}}福禄币
+        </view>
+        <view>
+          兑换时间：{{item.time}}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

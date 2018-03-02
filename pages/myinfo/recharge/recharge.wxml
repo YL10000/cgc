@@ -1,0 +1,24 @@
+<view class='page-title'>充值中心</view>
+<view class='recharge-content'>
+  <view class='recharge-title'>
+    <view> 账号：3456789</view>
+    <view>余额：12345福禄币</view>
+  </view>
+  <scroll-view scroll-y style="height: 730rpx;" data-index='0' bindscrolltolower="loadMore">
+    <view class='goods-list'>
+      <block wx:for="{{goods}}" wx:for-index="index">
+        <view class='good'>
+          <image src='{{item.image}}'></image>
+          <text>{{item.name}}</text>
+          <text>¥{{item.money}}</text>
+          <text>赠送{{item.fortune}}福禄币</text>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <view class='recharge-checkbox' bindtap='changeCheck'>
+    <label><checkbox /><text catchtap='readPayAgreement'>同意阅读《葫芦电竞支付协议》</text></label>
+  </view>
+  <button disabled='{{!aggree}}' bindtap='launchPay' class='pay-bt' type="primary"> 微信支付 </button>
+</view>
