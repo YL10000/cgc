@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/demo/demo",
+    "pages/index/index",
+    "pages/matchs/matchs",
+    "pages/matchs/detail/detail",
+    "pages/login/login",
+    "pages/logs/logs",
+    "pages/myinfo/myinfo",
+    "pages/myinfo/fortune/fortune",
+    "pages/myinfo/exchange/exchange",
+    "pages/myinfo/message/message",
+    "pages/myinfo/recharge/recharge",
+    "pages/myinfo/recharge/agreement/agreement",
+    "pages/myinfo/help/help",
+    "pages/myinfo/odds/odds",
+    "pages/myinfo/set/set",
+    "pages/myinfo/set/online/online",
+    "pages/myinfo/set/password/password",
+    "pages/myinfo/set/payer/payer",
+    "pages/myinfo/set/rule/rule",
+    "pages/shop/shop",
+    "pages/shop/shopDetail/shopDetail"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "cgc",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "backgroundColor": "#110F14",
+    "color": "#9CFAFD",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/matchs/matchs",
+        "text": "竞猜"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/myinfo/myinfo",
+        "text": "我的"
+      }
+    ]
+  },
+  "backgroundColor": "#000000",
+  "enablePullDownRefresh": true
+}

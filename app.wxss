@@ -1,0 +1,54 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+page{ 
+ height: 100%; 
+ color: white;
+ font-size: 12px;
+} 
+
+.page-title{
+  background-color: #000;
+  display: flex;
+  display: -webkit-flex;
+  height: 5%;
+  align-items: space-between;  
+  justify-content: center;
+}
+
+/*item底部样式*/
+.itemFooter{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  border-top: 2px solid #3F3F3F;
+  background-color: #000;
+
+}
+
+.foot-item{
+  width: 25%;
+  height: 60rpx;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  padding-top: 10px;
+  border-right: 1px solid #3F3F3F;
+}
+
+.item-box-active{
+  background-color: #EC0606;
+}
